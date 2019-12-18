@@ -70,7 +70,6 @@ class LibraryTest < Minitest::Test
   end
 
   def test_it_can_return_an_array_of_checked_out_books
-    skip
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
     villette = charlotte_bronte.write("Villette", "1853")
@@ -78,12 +77,12 @@ class LibraryTest < Minitest::Test
     mockingbird = harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
     @dpl.add_author(charlotte_bronte)
     @dpl.add_author(harper_lee)
+    @dpl.checkout(jane_eyre)
 
     assert_equal [jane_eyre], @dpl.checked_out_books
   end
 
   def test_a_book_can_be_returned
-    skip
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
     villette = charlotte_bronte.write("Villette", "1853")
@@ -106,7 +105,6 @@ class LibraryTest < Minitest::Test
   end
 
   def test_it_tracks_which_books_are_the_most_popular
-    skip
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
     villette = charlotte_bronte.write("Villette", "1853")
