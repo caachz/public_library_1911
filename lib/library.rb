@@ -29,7 +29,14 @@ class Library
   end
 
   def checkout(book)
-    book.checked_out = true
-    @checked_out_books << book
+    exists = @books.find do |book_in_library|
+      book
+    end
+    if exists != nil && book.checked_out == false
+      @checked_out_books << book
+      book.checked_out = true
+    else
+      false
+    end
   end
 end
