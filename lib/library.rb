@@ -17,7 +17,13 @@ class Library
   end
 
   def publication_time_frame_for(author)
-    author.books.max_by
-    require "pry"; binding.pry
+    newest_book = author.books.max_by do |book|
+      book.publication_year
+    end
+
+    oldest_book = author.books.min_by do |book|
+      book.publication_year
+    end
+    {start: oldest_book.publication_year, end: newest_book.publication_year}
   end
 end
